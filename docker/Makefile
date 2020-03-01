@@ -5,7 +5,7 @@ DOCKER_FILE=Dockerfile
 SRC?=$(shell pwd)
 CONTAINER_SRC=/root/Music/ytmdl
 
-IMAGE=yantonov/ytdml
+IMAGE=yantonov/ytmdl
 
 build:
 	docker build \
