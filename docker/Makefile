@@ -4,6 +4,7 @@ help:
 DOCKER_FILE=Dockerfile
 SRC?=$(shell pwd)
 CONTAINER_SRC=/root/Music/ytmdl
+SONG?=hello
 
 IMAGE=yantonov/ytmdl
 
@@ -18,7 +19,7 @@ run:
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			--rm \
 			"$(IMAGE)" \
-			"ytmdl" "$(filter-out $@,$(MAKECMDGOALS))"
+			"ytmdl" "$(SONG)"
 
 ssh:
 	docker run --rm -t -i -v "$(SRC):$(CONTAINER_SRC)" "$(IMAGE)" /bin/bash

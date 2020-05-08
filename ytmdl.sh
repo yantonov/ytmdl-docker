@@ -4,4 +4,4 @@ export SRC="$(pwd)"
 
 cd "$(dirname "$0")/docker"
 
-make run "$@"
+make SONG="$1" run
