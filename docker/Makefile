@@ -7,6 +7,7 @@ CONTAINER_SRC=/root/Music/ytmdl
 SONG?=hello
 
 IMAGE=yantonov/ytmdl
+CONTAINER_NAME?=$(shell echo "$(IMAGE)" | tr '/' '_')
 
 build:
 	docker build \
@@ -16,6 +17,7 @@ build:
 run:
 	docker run \
 			-i -t \
+			--name "$(CONTAINER_NAME)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			--rm \
 			"$(IMAGE)" \
@@ -25,7 +27,7 @@ ssh:
 	docker run --rm -t -i -v "$(SRC):$(CONTAINER_SRC)" "$(IMAGE)" /bin/bash
 
 stop:
-	docker stop "$(shell docker ps -a --filter "ancestor=$(IMAGE)" --format '{{.ID}}' | head -n 1 || echo "")"
+	docker stop "$(CONTAINER_NAME)"
 
 pull:
 	docker pull "$(IMAGE)"
