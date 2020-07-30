@@ -1,5 +1,5 @@
 Docker image for [ytmdl](https://github.com/deepjyoti30/ytmdl).  
-ytmdl version: [2020.03.21](https://raw.githubusercontent.com/yantonov/ytmdl-docker/master/docker/files/requirements.txt)
+ytmdl version can be found [here](https://raw.githubusercontent.com/yantonov/ytmdl-docker/master/docker/files/requirements.txt).
 
 Usage add this repository to PATH and use ytmdl script
 
