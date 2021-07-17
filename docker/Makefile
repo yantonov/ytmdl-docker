@@ -15,6 +15,7 @@ endif
 
 build:
 	docker build \
+		--no-cache \
 		-t $(IMAGE) \
 		-f $(DOCKER_FILE) .
 
@@ -26,7 +27,7 @@ run:
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
 			"$(IMAGE)" \
-			"ytmdl" "--url" "$(RUN_ARGS)"
+			"ytmdl" "--ignore-chapters" "--url" "$(RUN_ARGS)"
 
 ssh:
 	docker run -i -t \
