@@ -9,5 +9,7 @@ Usage add this repository to PATH and use ytmdl script
     ytmdl.sh song_name|url
 ```
 
+There is a [fork](https://github.com/yantonov/ytmdl-docker/tree/ignore_chapters) that supports disabling chapters.
+
 Links:
 [The best Docker base image for your Python application (July 2019)](https://pythonspeed.com/articles/base-image-python-docker-images/)
