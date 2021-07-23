@@ -18,7 +18,7 @@ RUN apt-get update && \
 # ADD files/requirements.txt /
 # RUN pip install -r /requirements.txt
 
-# install from fork
-RUN cd /opt && git clone https://github.com/yantonov/ytmdl.git && cd ytmdl && git checkout ignore_chapters && pip install .
+# install from unstable branch (before it was a fork, now the changes are inside unstable branch)
+RUN cd /opt && git clone https://github.com/deepjyoti30/ytmdl.git && cd ytmdl && git checkout unstable && pip install .
 
 WORKDIR $MUSIC_HOME

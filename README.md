@@ -3,7 +3,9 @@ ytmdl version used by the docker image can be found [here](https://raw.githubuse
 
 Latest ytmdl version can be found [here](https://raw.githubusercontent.com/deepjyoti30/ytmdl/master/ytmdl/__version__.py)
 
-**Important**: this branch uses the [fork](https://github.com/yantonov/ytmdl/tree/ignore_chapters) of ytmdl.
+**Important**: 
+this branch used the [fork](https://github.com/yantonov/ytmdl/tree/ignore_chapters) of ytmdl,
+not it uses the [unstable](https://github.com/deepjyoti30/ytmdl/tree/unstable) branch of the official repository, because the corresponding changes were merged there.
 
 Usage add this repository to PATH and use ytmdl script
 
