@@ -26,7 +26,7 @@ run:
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
 			"$(IMAGE)" \
-			"ytmdl" "--url" "$(RUN_ARGS)" "--ignore-chapters"
+			"ytmdl" "--url" "$(RUN_ARGS)" "--ignore-chapters" "--skip-meta"
 
 ssh:
 	docker run -i -t \
