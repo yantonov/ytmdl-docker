@@ -21,7 +21,7 @@ build:
 run:
 	docker run \
 			-i -t \
-			--name "$(CONTAINER_NAME)" \
+			--name "$(CONTAINER_NAME)-$(shell date +%s)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
@@ -30,7 +30,7 @@ run:
 
 ssh:
 	docker run -i -t \
-			--name "$(CONTAINER_NAME)" \
+			--name "$(CONTAINER_NAME)-$(shell date +%s)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
