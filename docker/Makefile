@@ -2,7 +2,7 @@ help:
 	@cat Makefile
 
 DOCKER_FILE=Dockerfile
-SRC?=$(shell pwd)
+SRC?=$(HOME)/Downloads
 CONTAINER_SRC=/root/Music/ytmdl
 
 IMAGE=yantonov/ytmdl
@@ -26,7 +26,7 @@ run:
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
 			"$(IMAGE)" \
-			"ytmdl" "--url" "$(RUN_ARGS)" "--ignore-chapters" "--skip-meta"
+			"ytmdl" "--url" "$(RUN_ARGS)" "--ignore-chapters" "--skip-meta" "--ignore-errors"
 
 ssh:
 	docker run -i -t \
