@@ -6,7 +6,7 @@ SRC?=$(HOME)/Downloads
 CONTAINER_SRC=/root/Music/ytmdl
 
 IMAGE=yantonov/ytmdl
-CONTAINER_NAME?=$(shell echo "$(IMAGE)" | tr '/' '_')
+CONTAINER_NAME?=$(shell echo "$(IMAGE)_$(shell date +%s)" | tr '/' '_')
 
 ifeq (run, $(firstword $(MAKECMDGOALS)))
   RUN_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
@@ -21,7 +21,7 @@ build:
 run:
 	docker run \
 			-i -t \
-			--name "$(CONTAINER_NAME)-$(shell date +%s)" \
+			--name "$(CONTAINER_NAME)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			-e SONG_DIR="$(CONTAINER_SRC)" \
 			--rm \
