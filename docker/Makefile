@@ -13,13 +13,15 @@ ifeq (run, $(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
+EXECUTABLE=$(shell command -v docker >> /dev/null 2>&1 && echo "docker" || echo "podman")
+
 build:
-	docker build \
+	$(EXECUTABLE) build \
 		-t $(IMAGE) \
 		-f $(DOCKER_FILE) .
 
 run:
-	docker run \
+	$(EXECUTABLE) run \
 			-i -t \
 			--name "$(CONTAINER_NAME)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
@@ -29,7 +31,7 @@ run:
 			"ytmdl" "--url" "$(RUN_ARGS)" "--ignore-chapters" "--skip-meta" "--ignore-errors"
 
 ssh:
-	docker run -i -t \
+	$(EXECUTABLE) run -i -t \
 			--name "$(CONTAINER_NAME)-$(shell date +%s)" \
 			-v "$(SRC):$(CONTAINER_SRC)" \
 			-e SONG_DIR="$(CONTAINER_SRC)" \
@@ -38,13 +40,13 @@ ssh:
 			/bin/bash
 
 stop:
-	docker stop "$(CONTAINER_NAME)"
+	$(EXECUTABLE) stop "$(CONTAINER_NAME)"
 
 pull:
-	docker pull "$(IMAGE)"
+	$(EXECUTABLE) pull "$(IMAGE)"
 
 push:
-	docker push "$(IMAGE)"
+	$(EXECUTABLE) push "$(IMAGE)"
 
 uninstall:
-	docker image rm "$(IMAGE)"
+	$(EXECUTABLE) image rm "$(IMAGE)"
