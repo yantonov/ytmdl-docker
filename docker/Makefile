@@ -20,6 +20,11 @@ build:
 		-t $(IMAGE) \
 		-f $(DOCKER_FILE) .
 
+rebuild:
+	$(EXECUTABLE) build --no-cache \
+		-t $(IMAGE) \
+		-f $(DOCKER_FILE) .
+
 run:
 	$(EXECUTABLE) run \
 			-i -t \
